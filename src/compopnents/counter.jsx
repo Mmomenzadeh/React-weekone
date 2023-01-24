@@ -1,12 +1,12 @@
 import React ,{useState} from 'react'
 import "../assets/styles/counter.css"
-const Counter  = () =>{
-    const [count , setCount] = useState(0)
+const Counter  = (props) =>{
+    const [count , setCount] = useState(props.InitialCount)
     return(
         
         <div className='counter-container'> 
             count :{count}
-            <button onClick={()=>{setCount(0)}}>reset</button>
+            <button onClick={()=>{setCount(props.InitialCount)}}>reset</button>
             <button onClick={()=>{setCount(prevCount => prevCount +1)}}>+</button>
             <button onClick={()=>{setCount(prevCount => prevCount -1)}}>-</button>
 
