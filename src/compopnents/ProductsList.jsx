@@ -3,11 +3,11 @@ import Product from "./Product";
 
 
 
-const ProductsList = ({initialList}) => {
+const ProductsList = ({initialList , onDelete}) => {
   return (
     <div className="list-container">
       {initialList.map((item) => {
-        return <Product key={item.id}  title={item.title} price={item.price} />
+        return <Product key={item.id}  product={item} onDelete={onDelete} />
       })}
     </div>
   );

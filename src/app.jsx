@@ -7,8 +7,7 @@ import ProductsList from "./compopnents/ProductsList";
 import Toggle from "./compopnents/Toggle";
 
 const App = () => {
-
-  const [currentState , setState] = useState( [
+  const [currentState, setState] = useState([
     {
       id: 1,
       title: "book1",
@@ -24,8 +23,14 @@ const App = () => {
       title: "book3",
       price: 100,
     },
-  ])
+  ]);
 
+  const onDelete = (id) => {
+    const deleted = currentState.filter((product) => product.id !== id);
+    setState(deleted);
+
+    // setState(currentState.filter(product => product.id !== id))
+  };
 
   return (
     <div>
@@ -33,7 +38,7 @@ const App = () => {
       {/* <Clock /> */}
       <Counter InitialCount={0} />
       <Form />
-      <ProductsList  initialList={currentState}/>
+      <ProductsList initialList={currentState} onDelete={onDelete} />
     </div>
   );
 };
