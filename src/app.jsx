@@ -5,6 +5,7 @@ import Form from "./compopnents/Form";
 import ProductsList from "./compopnents/ProductsList";
 // import Clock from "./compopnents/Clock";
 import Toggle from "./compopnents/Toggle";
+import Parent from "./compopnents/Parent";
 
 const App = () => {
   const [currentState, setState] = useState([
@@ -25,20 +26,39 @@ const App = () => {
     },
   ]);
 
+  const addProduct = (title) => {
+    const id = Math.floor(Math.random() * 1000);
+    const newProduct = {
+      id,
+      ...title,
+    };
+
+    setState([...currentState , newProduct])
+  };
+
   const onDelete = (id) => {
     const deleted = currentState.filter((product) => product.id !== id);
     setState(deleted);
-
     // setState(currentState.filter(product => product.id !== id))
   };
 
   return (
-    <div>
+    <div className="container">
       <Toggle />
+      <br />
+      <br />
+      <hr />
       {/* <Clock /> */}
       <Counter InitialCount={0} />
-      <Form />
+      <br />
+      <br />
+      <hr />
+      <Form addProduct={addProduct} />
       <ProductsList initialList={currentState} onDelete={onDelete} />
+      <br />
+      <br />
+      <hr />
+      <Parent />
     </div>
   );
 };
