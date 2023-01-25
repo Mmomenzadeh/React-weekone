@@ -30,10 +30,10 @@ const App = () => {
     const id = Math.floor(Math.random() * 1000);
     const newProduct = {
       id,
-      ...title,
+      title,
     };
 
-    setState([...currentState , newProduct])
+    setState([...currentState, newProduct]);
   };
 
   const onDelete = (id) => {
@@ -54,7 +54,7 @@ const App = () => {
       <br />
       <hr />
       <Form addProduct={addProduct} />
-      <ProductsList initialList={currentState} onDelete={onDelete} />
+      <ProductsList currentState={currentState} onDelete={onDelete} />
       <br />
       <br />
       <hr />
